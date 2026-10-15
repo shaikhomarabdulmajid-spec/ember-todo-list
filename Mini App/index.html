@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ember — streak to-do</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Outfit:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="glow glow-a"></div>
+    <div class="glow glow-b"></div>
+
+    <main class="app">
+      <header class="hero">
+        <p class="eyebrow">Daily discipline</p>
+        <h1>Ember</h1>
+        <p class="lede">
+          Finish a task to earn points. Finish at least one a day to keep the fire going.
+        </p>
+      </header>
+
+      <section class="stats" aria-label="Progress">
+        <article class="stat stat-streak">
+          <span class="stat-icon" aria-hidden="true">🔥</span>
+          <div>
+            <p class="stat-label">Streak</p>
+            <p class="stat-value"><span id="streak">0</span> <small>days</small></p>
+            <p class="stat-sub">Best: <span id="best-streak">0</span></p>
+          </div>
+        </article>
+        <article class="stat stat-points">
+          <span class="stat-icon" aria-hidden="true">✦</span>
+          <div>
+            <p class="stat-label">Points</p>
+            <p class="stat-value" id="points">0</p>
+            <p class="stat-sub" id="today-line">0 done today</p>
+          </div>
+        </article>
+      </section>
+
+      <p class="streak-note" id="streak-note"></p>
+
+      <form class="composer" id="task-form">
+        <label class="sr-only" for="task-input">New task</label>
+        <input
+          id="task-input"
+          name="text"
+          type="text"
+          maxlength="140"
+          placeholder="What needs doing?"
+          autocomplete="off"
+          required
+        />
+        <label class="sr-only" for="difficulty">Difficulty</label>
+        <select id="difficulty" name="difficulty">
+          <option value="easy">Easy · 10</option>
+          <option value="medium" selected>Medium · 25</option>
+          <option value="hard">Hard · 50</option>
+        </select>
+        <button type="submit">Add</button>
+      </form>
+
+      <div class="filters" role="tablist" aria-label="Filter tasks">
+        <button type="button" class="filter is-active" data-filter="active">Open</button>
+        <button type="button" class="filter" data-filter="done">Done</button>
+        <button type="button" class="filter" data-filter="all">All</button>
+      </div>
+
+      <ul class="list" id="task-list"></ul>
+      <p class="empty" id="empty-state">No open tasks. Add one and start a streak.</p>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
